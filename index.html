@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Captain Planet: The Game!</title>
+
+    <!-- Link Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <!-- Link JQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- link Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+</head>
+
+
+<body>
+    <!-- Create a Boot Strap Container. 1 header using jumbotron with title , Then 1 row with 2 columns both col-6-->
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4 text-center">Captain Planet</h1>
+            <hr class="my-4">
+            <div id="musicControls" class="text-center">
+                <button type="button" class="btn btn-warning btn-play"> <span class="fas fa-play"></span> Play Theme!</button>
+                <button type="button" class="btn btn-dark btn-xs pause-button btn-pause"> <span class=" fa fa-pause"></span>
+                    Pause!</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Superpowers - Change Sizes!</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- buttons -->
+                        <div class="text-center">
+                            <button type="button" class="btn btn-dark btn-lg button1">Normal</button>
+                            <button type="button" class="btn btn-primary btn-lg button2"><span class="fa fa-plus"></span>
+                                Grow</button>
+                            <button type="button" class="btn btn-danger btn-lg button3"><span class="fa fa-minus"></span>
+                                Shrink</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="visibilityControls" class="card">
+                    <h5 class="card-header">Superpowers - Invisiblity!
+                    </h5>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <!-- Buttons -->
+                            <button class="btn btn-dark btn-lg vis-button">
+                                <span class="fa fa-eye"></span> Visible</button>
+                            <button class="btn btn-info btn-lg invis-button">
+                                <span class="fa fa-eye-slash"></span> Invisible</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="stretchControls" class="card">
+                    <h5 class="card-header">Superpowers - Stretch!</h5>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <!-- Buttons -->
+                            <button class="btn btn-dark btn-lg unstretch-btn">
+                                <span class="fa fa-compress"></span> Normal</button>
+                            <button class="btn btn-primary btn-lg stretch-btn">
+                                <span class="fa fa-expand"></span> Stretch</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Move Control</h5>
+                        <!-- Mike and Steve doing these buttons -->
+                    </div>
+                    <div class="card-body">
+                        <!-- buttons -->
+                        <div class="text-center">
+                            <div class="row1 mb-1">
+                                <button type="button" class="btn btn-dark btn-lg buttonUp"><span class="fas fa-arrow-up"></span>
+                                    Up</button>
+                            </div>
+                            <div class="row2">
+                                <button type="button" class="btn btn-dark btn-lg buttonLeft"><span class="fas fa-arrow-left"></span>
+                                    Left</button>
+                                <button type="button" class="btn btn-dark btn-lg buttonDown"><span class="fas fa-arrow-down"></span>
+                                    Down</button>
+                                <button type="button" class="btn btn-dark btn-lg buttonRight"><span class="fas fa-arrow-right"></span>
+                                    Right</button>
+                            </div>
+                            <br>
+                            <div class="row3">
+                                <button type="button" class="btn btn-dark btn-lg btn-goPlanet"><span class="fab fa-rocketchat"></span>
+                                    Go Planet!
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 ">
+                <img class="captainPlanet" src=" https://geekandsundry.com/wp-content/uploads/2015/04/captain_planet03_20110719151223-e1429397562928-970x545.jpg "
+                    alt="Captain Planet " style="position:absolute; top:50px; left: 80px; z-index: -20; height: 300px; width: 500px">
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+<script>
+    // JavaScript function that wraps everything
+    $(document).ready(function () {
+        //captianPlanet Variable 
+        var captainPlanet = $(".captainPlanet");
+        // music on play & pause buttons 
+        var music = document.createElement("audio");
+        music.setAttribute("src", "captainplanet.mp3");
+
+        $(".btn-play").on("click", function () {
+            music.play();
+        });
+        $(".btn-pause").on("click", function () {
+            music.pause();
+        })
+
+        //Go Planet! button
+        var goPlanetMusic = document.createElement("audio");
+        goPlanetMusic.setAttribute("src", "goplanet.mp3");
+
+        $(".btn-goPlanet").on("click", function () {
+            goPlanetMusic.play();
+        })
+
+
+
+        // Size Buttons
+        $(".button1").on("click", function () {
+            captainPlanet.animate({ height: "300px" });
+        });
+
+        $(".button2").on("click", function () {
+            captainPlanet.animate({ height: "900px" });
+        });
+
+        $(".button3").on("click", function () {
+            captainPlanet.animate({ height: "80px" });
+        });
+
+        // <!-- Invisibility Buttons -->
+        $(".vis-button").on("click", function () {
+            captainPlanet.animate({ opacity: "1" });
+        });
+        $(".invis-button").on("click", function () {
+            captainPlanet.animate({ opacity: "0.03" });
+        });
+
+
+        // Stretch Button Functions
+        $(".stretch-btn").on("click", function () {
+            captainPlanet.animate({ height: "850px", width: "150px" });
+        });
+        $(".unstretch-btn").on("click", function () {
+            captainPlanet.animate({ height: "300px", width: "450px" });
+        });
+
+
+        // Move Buttons     
+
+        $(".buttonUp").on("click", function () {
+            captainPlanet.animate({ top: "-=200px" }, "normal");
+        });
+
+        $(".buttonDown").on("click", function () {
+            captainPlanet.animate({ top: "+=200px" }, "normal");
+        });
+
+        $(".buttonLeft ").on("click ", function () {
+            captainPlanet.animate({ left: "-=200px" }, "normal");
+        });
+
+        $(".buttonRight").on("click", function () {
+            captainPlanet.animate({ left: "+=200px" }, "normal");
+        });
+
+
+
+    });
+
+
+</script>
+
+</html>
